@@ -1,6 +1,11 @@
 import SelectCountry from "@/app/_components/SelectCountry";
 import Image from "next/image";
 
+export const metadata = {
+  title:"update profile"
+}
+
+
 export default function Page() {
   // CHANGE
   const countryFlag = "pt.jpg";
