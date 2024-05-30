@@ -23,6 +23,6 @@ const cabinsSchema = new mongoose.Schema({
   image:String
 },{timestamps:true})
 
-const Cabins = mongoose?.models?.Cabins || mongoose?.model("Bookings",cabinsSchema);
+const Cabins = mongoose?.models?.Cabins || mongoose?.model("Cabins",cabinsSchema);
 
 export default Cabins;
