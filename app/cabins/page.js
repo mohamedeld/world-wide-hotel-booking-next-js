@@ -1,17 +1,17 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import CabinCard from '../_components/CabinCard'
 import { getCabins } from '../_lib/server-data'
+import CabinList from '../_components/CabinList'
+import Spinner from '../_components/Spinner'
+
+export const revalidate = 0;
 
 export const metadata ={
   title:'cabins'
 }
-const cabins = [
-  {
-    id:1, name:"ali", maxCapacity:12, regularPrice:20, discount:5, image:'https:www.google.com'
-  }
-]
-const Page = async() => {
-  const cabins = await getCabins();
+
+const Page = () => {
+  
   return (
     <div>
     <h1 className="text-4xl mb-5 text-accent-400 font-medium">
@@ -25,14 +25,10 @@ const Page = async() => {
       away from home. The perfect spot for a peaceful, calm vacation. Welcome
       to paradise.
     </p>
+    <Suspense fallback={<Spinner/>}>
 
-    {cabins?.length > 0 && (
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 xl:gap-14">
-        {cabins?.map((cabin) => (
-          <CabinCard cabin={cabin} key={cabin.id} />
-        ))}
-      </div>
-    )}
+    <CabinList/>
+    </Suspense>
   </div>
   )
 }
